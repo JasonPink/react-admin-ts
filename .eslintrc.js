@@ -39,19 +39,17 @@ module.exports = {
     'unicorn/filename-case': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
-    'no-shadow': 'off'
+    'no-shadow': 'off',
+    'import/extensions': [
+      ERROR,
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never',
+        json: 'never',
+        js: 'never'
+      }
+    ]
     // '@typescript-eslint/no-shadow': ['error']
   }
-  // rules: {
-  //   'import/extensions': [
-  //     ERROR,
-  //     'ignorePackages',
-  //     {
-  //       ts: 'never',
-  //       tsx: 'never',
-  //       json: 'never',
-  //       js: 'never'
-  //     }
-  //   ]
-  // }
 }

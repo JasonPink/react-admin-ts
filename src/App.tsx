@@ -1,5 +1,10 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import { useEffect, useState } from 'react'
+// import logo from './logo.svg'
+import { Route, Routes, useRoutes } from 'react-router-dom'
+import Home from '@/views/home'
+import List from '@/views/list'
+import Child from '@/views/child'
+import routes from '@/router'
 import './App.css'
 
 function App() {
@@ -9,36 +14,27 @@ function App() {
     b: 1
   }
 
-  console.log(123)
-
+  const element = useRoutes(routes)
+  useEffect(() => {
+    console.log('useEffect start!!!')
+  }, [])
+  const test = () => {
+    return <>888s8</>
+  }
+  const _404 = () => {
+    return <>404</>
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      {element}
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="list" element={<List />}>
+          <Route path=":id" element={<Child />} />
+          <Route index element={test()} />
+        </Route>
+        <Route path="*" element={_404()} />
+      </Routes> */}
     </div>
   )
 }
