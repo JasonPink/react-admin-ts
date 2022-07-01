@@ -1,9 +1,15 @@
-import { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { useState } from 'react'
+import logo from './logo.svg'
+import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
+  const object = {
+    a: 1,
+    b: 1
+  }
+
+  console.log(123)
 
   return (
     <div className="App">
@@ -19,15 +25,10 @@ function App() {
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React
           </a>
-          {" | "}
+          {' | '}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"
@@ -39,7 +40,7 @@ function App() {
         </p>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
