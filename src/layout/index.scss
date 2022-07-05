@@ -1,0 +1,14 @@
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+  .layout-side {
+    width: 220px;
+    height: 100%;
+    .menu {
+      height: 100%;
+    }
+  }
+  .layout-main {
+    flex: 1;
+  }
+}

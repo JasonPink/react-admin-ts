@@ -1,0 +1,12 @@
+body {
+  background: red;
+}
+.App {
+  display: flex;
+}
+.app-side {
+  width: 200px;
+}
+.app-main {
+  flex: 1;
+}
