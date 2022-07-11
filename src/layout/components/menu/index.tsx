@@ -6,6 +6,66 @@ import { rootRouter } from '@/routers/index'
 import { searchRoute } from '@/utils'
 import * as Icons from '@ant-design/icons'
 
+const temenulist = [
+  {
+    icon: 'HomeOutlined',
+    title: '首页',
+    path: '/home/index'
+  },
+  {
+    icon: 'TableOutlined',
+    title: '超级表格',
+    path: '/permission',
+    children: [
+      {
+        icon: 'AppstoreOutlined',
+        path: '/permission/admin',
+        title: '使用 Hooks'
+      },
+      {
+        icon: 'AppstoreOutlined',
+        path: '/permission/editor',
+        title: '使用 Component'
+      },
+      {
+        icon: 'AppstoreOutlined',
+        path: '/permission/explanation',
+        title: '使用 Component'
+      }
+    ]
+  },
+  {
+    icon: 'PaperClipOutlined',
+    title: '外部链接',
+    path: '/link',
+    children: [
+      {
+        icon: 'AppstoreOutlined',
+        path: '/link/gitee',
+        title: 'Gitee 仓库',
+        isLink: 'https://gitee.com/laramie/Hooks-Admin'
+      },
+      {
+        icon: 'AppstoreOutlined',
+        path: '/link/github',
+        title: 'GitHub 仓库',
+        isLink: 'https://github.com/HalseySpicy/Hooks-Admin'
+      }
+      // {
+      //   icon: 'AppstoreOutlined',
+      //   path: '/link/juejin',
+      //   title: '掘金文档',
+      //   isLink: 'https://juejin.cn/user/3263814531551816/posts'
+      // },
+      // {
+      //   icon: 'AppstoreOutlined',
+      //   path: '/link/myBlog',
+      //   title: '个人博客',
+      //   isLink: 'http://www.spicyboy.cn'
+      // }
+    ]
+  }
+]
 export default function LayoutMenu(props: any) {
   const { pathname } = useLocation()
 
@@ -47,10 +107,10 @@ export default function LayoutMenu(props: any) {
 
   const getMenuData = async () => {
     // const { data } = await getMenuList()
-    console.log('路由配置：', rootRouter)
+    // console.log('路由配置：', rootRouter)
 
-    // if (!data) return
-    setMenuList(
+    console.log(
+      'menu:',
       deepLoopFloat([
         {
           icon: 'HomeOutlined',
@@ -278,6 +338,12 @@ export default function LayoutMenu(props: any) {
         }
       ])
     )
+
+    // const formatMenu = (menuList) => {
+    //   menuList.forEach((item) => {})
+    // }
+    // if (!data) return
+    setMenuList(deepLoopFloat(temenulist))
     // 存储处理过后的所有面包屑导航栏到 redux 中
     // props.setBreadcrumbList(findAllBreadcrumb(data));
     // // 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
@@ -287,8 +353,9 @@ export default function LayoutMenu(props: any) {
   }
 
   useEffect(() => {
+    setSelectedKeys([pathname])
     getMenuData()
-  }, [])
+  }, [pathname])
   // 设置当前展开的 subMenu
   const onOpenChange = (openKeys: string[]) => {
     if (openKeys.length === 0 || openKeys.length === 1) return setOpenKeys(openKeys)
@@ -299,7 +366,9 @@ export default function LayoutMenu(props: any) {
   // 点击当前菜单跳转页面
   const navigate = useNavigate()
   const clickMenu: MenuProps['onClick'] = ({ key }: { key: string }) => {
-    const route = searchRoute(key, props.menuList)
+    const route = searchRoute(key, temenulist)
+    // console.log('sss', key, props.menuList)
+
     if (route.isLink) window.open(route.isLink, '_blank')
     navigate(key)
   }

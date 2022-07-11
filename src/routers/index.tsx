@@ -23,10 +23,7 @@ export const rootRouter: RouteObject[] = [
       key: 'login'
     }
   },
-  {
-    path: '/table',
-    element: <Table />
-  },
+
   {
     element: <Layout />,
     children: [
@@ -67,6 +64,30 @@ export const rootRouter: RouteObject[] = [
       {
         path: '/permission/explanation',
         element: lazyLoad(React.lazy(() => import('@/views/permission/explanation'))),
+        meta: {
+          requiresAuth: true,
+          title: '首页',
+          key: 'home'
+        }
+      }
+    ]
+  },
+  {
+    path: '/link',
+    element: <Layout />,
+    children: [
+      {
+        path: '/link/gitee',
+        element: lazyLoad(React.lazy(() => import('@/views/link/gitee'))),
+        meta: {
+          requiresAuth: true,
+          title: '首页',
+          key: 'home'
+        }
+      },
+      {
+        path: '/link/github',
+        element: lazyLoad(React.lazy(() => import('@/views/link/github'))),
         meta: {
           requiresAuth: true,
           title: '首页',
