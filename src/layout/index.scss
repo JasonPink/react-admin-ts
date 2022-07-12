@@ -1,8 +1,37 @@
 .layout-container {
   display: flex;
+  overflow: hidden;
+  .logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    img {
+      width: 30px;
+    }
+    .logo-text {
+      margin: 0 0 0 10px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #dadada;
+      white-space: nowrap;
+    }
+  }
+  .layout-header {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 20px;
+    background: #fff;
+    border-bottom: 1px solid #f6f6f6;
+    .icon-collapsed {
+      font-size: 18px;
+    }
+  }
   .layout-side {
     height: 100vh;
     transition: all 0.3s;
+    background: #001529;
     .menu {
       height: 100%;
     }
@@ -12,5 +41,15 @@
   }
   .layout-main {
     flex: 1;
+    background: #f0f2f5;
+  }
+  .layout-content {
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 4px;
+    min-height: calc(100vh - 70px);
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
   }
 }

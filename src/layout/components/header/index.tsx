@@ -1,7 +1,7 @@
 import React from 'react'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+
 import { useSelector, useDispatch } from 'react-redux'
-import { Button } from 'antd'
 import { toggleCollapsed } from '@/store/features/menuSlice'
 
 export default function index() {
@@ -9,10 +9,10 @@ export default function index() {
   const dispatch = useDispatch()
 
   return (
-    <div>
-      <Button onClick={() => dispatch(toggleCollapsed())} style={{ marginBottom: 16 }}>
+    <div className="layout-header">
+      <span className="icon-collapsed" onClick={() => dispatch(toggleCollapsed())}>
         {isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button>
+      </span>
     </div>
   )
 }
