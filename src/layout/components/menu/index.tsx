@@ -5,6 +5,7 @@ import type { MenuProps } from 'antd'
 import { rootRouter } from '@/routers/index'
 import { searchRoute } from '@/utils'
 import * as Icons from '@ant-design/icons'
+import { useSelector } from 'react-redux'
 
 const temenulist = [
   {
@@ -72,6 +73,7 @@ export default function LayoutMenu(props: any) {
   const [menuList, setMenuList] = useState<MenuItem[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([pathname])
+  const { isCollapsed } = useSelector((state: any) => state.menu)
 
   type MenuItem = Required<MenuProps>['items'][number]
   const getItem = (
@@ -383,7 +385,7 @@ export default function LayoutMenu(props: any) {
         selectedKeys={selectedKeys}
         items={menuList}
         onClick={clickMenu}
-        inlineCollapsed={true}
+        inlineCollapsed={isCollapsed}
         onOpenChange={onOpenChange}
       ></Menu>
     </div>
