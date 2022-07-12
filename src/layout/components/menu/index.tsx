@@ -383,6 +383,7 @@ export default function LayoutMenu(props: any) {
         selectedKeys={selectedKeys}
         items={menuList}
         onClick={clickMenu}
+        inlineCollapsed={true}
         onOpenChange={onOpenChange}
       ></Menu>
     </div>
