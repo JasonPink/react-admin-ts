@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleCollapsed } from '@/store/features/menuSlice'
 
 export default function index() {
-  const { isCollapsed } = useSelector((state) => state.menu)
+  const { isCollapsed } = useSelector((state: any) => state.menu)
   const dispatch = useDispatch()
 
   return (

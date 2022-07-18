@@ -4,15 +4,17 @@ import { useSelector } from 'react-redux'
 import LayoutMenu from './components/menu'
 import LayoutHeader from './components/header'
 import LayoutLogo from './components/logo'
+import LayoutSetting from './components/setting'
 import './index.scss'
 
 export default function Laout() {
   const { isCollapsed } = useSelector((state: any) => state.menu)
+  const { showlogo } = useSelector((state: any) => state.setting)
 
   return (
     <div className="layout-container">
       <div className="layout-side" style={{ width: !isCollapsed ? '220px' : '80px' }}>
-        <LayoutLogo />
+        {showlogo ? <LayoutLogo /> : null}
         <LayoutMenu />
       </div>
       <div className="layout-main">
@@ -21,6 +23,7 @@ export default function Laout() {
           <Outlet />
         </div>
       </div>
+      <LayoutSetting />
     </div>
   )
 }
